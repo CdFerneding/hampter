@@ -9,19 +9,23 @@ yspd = (_down_key - _up_key) * move_speed;
 
 
 // set sprite
-mask_index = sprite[DOWN]
-if yspd == 0 {
-	if xspd > 0 {face=RIGHT;}
-	if xspd < 0 {face=LEFT;}
+mask_index = sprite[DOWN];
+// make left/right-movement trump down and up (similar to stardew valley)
+// Check for right/left movement
+if (xspd > 0) {
+    face = RIGHT;
+} else if (xspd < 0) {
+    face = LEFT;
 }
-if xspd > 0 && face == LEFT {face = RIGHT;}
-if xspd < 0 && face == RIGHT {face = LEFT;}
-if xspd == 0 {
-	if yspd > 0 {face=DOWN;}
-	if yspd < 0 {face=UP;}
+
+// Check for up/down movement only if face is not already set
+if (xspd == 0) {
+    if (yspd > 0) {
+        face = DOWN;
+    } else if (yspd < 0) {
+        face = UP;
+    }
 }
-if yspd > 0 && face == UP {face = DOWN;}
-if yspd < 0 && face == DOWN {face = UP;}
 sprite_index = sprite[face];
 
 
